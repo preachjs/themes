@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "declaration": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+    "lib": ["ES2015"],
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "paths": {
+      "@preachjs/themes": ["./src"]
+    }
+  },
+  "include": ["src/*"]
+}

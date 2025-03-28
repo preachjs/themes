@@ -1,0 +1,68 @@
+{
+  "name": "@preachjs/themes",
+  "version": "0.0.0",
+  "description": "themes provider for preact",
+  "homepage": "https://github.com/preachjs/themes",
+  "bugs": {
+    "url": "https://github.com/preachjs/themes/issues"
+  },
+  "repository": {
+    "url": "git+https://github.com/preachjs/themes.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "reaper",
+    "email": "ahoy@barelyhuman.dev",
+    "url": "https://reaper.is"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/themes.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": ["dist/*"],
+  "scripts": {
+    "dev": "concurrently 'pnpm:build watch' 'pnpm:build:docs watch'",
+    "build": "pnpm build:js && pnpm build:docs",
+    "build:js": "microbundle -f modern",
+    "build:docs": "microbundle -f modern -o docs/bundle",
+    "fix": "biome check --fix .",
+    "prepare": "husky",
+    "next": "bumpp",
+    "publint": "publint",
+    "prepublishOnly": "pnpm build"
+  },
+  "license": "MIT",
+  "nano-staged": {
+    "*.{js,ts,json}": ["biome check --fix"],
+    "*.{md}": ["prettier --write"]
+  },
+  "prettier": "@barelyhuman/prettier-config",
+  "devDependencies": {
+    "@barelyhuman/prettier-config": "^2.0.2",
+    "@biomejs/biome": "^1.9.4",
+    "bumpp": "^9.9.2",
+    "concurrently": "^9.1.2",
+    "husky": "^9.1.7",
+    "microbundle": "^0.15.1",
+    "nano-staged": "^0.8.0",
+    "preact": "^10",
+    "prettier": "^3.4.2",
+    "publint": "^0.2.12",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@dumbjs/persona": "^0.1.1"
+  },
+  "peerDependencies": {
+    "@preact/signals": "^2.0.1",
+    "preact": "^10"
+  },
+  "packageManager": "pnpm@9.15.9"
+}
