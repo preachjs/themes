@@ -99,11 +99,10 @@ React hook that provides theme management functionality.
 Returns:
 - `theme`: Current theme value (`'light'`, `'dark'`, or `'system'`)
 - `setTheme`: Function to update the theme
-- `systemTheme`: The resolved system theme (`'light'` or `'dark'`)
 
 Example:
 ```jsx
-const { theme, setTheme, systemTheme } = useTheme('system')
+const { theme, setTheme } = useTheme('system')
 ```
 
 ### ThemeProvider
