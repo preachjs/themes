@@ -3,12 +3,12 @@
   padding: 0;
 }
 
-html[data-theme='light'] {
+html[data-theme="light"] {
   --bg: #fff;
   --fg: #181819;
 }
 
-html[data-theme='dark'] {
+html[data-theme="dark"] {
   --bg: #181819;
   --fg: #fff;
 }
