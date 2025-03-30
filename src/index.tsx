@@ -4,7 +4,7 @@ import {
   onSystemThemeChange,
   setTheme as setPersonaTheme,
 } from '@dumbjs/persona'
-import { createContext, h } from 'preact'
+import { Fragment, createContext, h } from 'preact'
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks'
 
 export type ThemeCtx = { theme: string; setTheme: (t: string) => void }
@@ -15,20 +15,13 @@ export const THEMES = {
   SYSTEM: 'system',
 } as const
 
-const _initContext: ThemeCtx = {
-  theme: THEMES.SYSTEM,
-  setTheme() {},
-}
+const Context = createContext<ThemeCtx | undefined>(undefined)
 
-if (typeof window !== 'undefined') {
-  _initContext.theme = getThemeFromStorage()
-}
-
-const Context = createContext<ThemeCtx>(_initContext)
-
-export const useTheme = () => {
-  return useContext(Context)
-}
+export const useTheme = () =>
+  useContext(Context) ?? {
+    theme: 'system',
+    setTheme() {},
+  }
 
 type Options = (typeof THEMES)[keyof typeof THEMES]
 
@@ -77,7 +70,33 @@ export const ThemeProvider = ({
 
   return (
     <Context.Provider value={{ theme, setTheme: changeTheme }}>
-      {children}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          function getTheme(){
+            const system = getSystemTheme()
+            const storage = localStorage.getItem(\"${storageKey}\")
+            if(storage){
+              if(storage === "system"){
+                return system
+              }
+              return storage
+            }
+            return system
+          }
+
+          function getSystemTheme() {
+              return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+          }
+
+          const theme = getTheme()
+          const el = document.documentElement
+          el.dataset.theme = theme
+          el.style.colorScheme = theme
+        `,
+        }}
+      ></script>
+      <div key="kids">{children}</div>
     </Context.Provider>
   )
 }
