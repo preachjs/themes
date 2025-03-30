@@ -10,6 +10,7 @@
 
 - 📦 Tiny bundle size (~413B GZipped)
 - 🤌 Simple API
+- Based on [@dumbjs/persona](https://github.com/dumbjs/persona)
 
 ## Install
 
@@ -73,8 +74,10 @@ const App = () => {
 
 The `ThemeProvider` component accepts the following props:
 
-- `defaultTheme`: The initial theme to use (`'light'`, `'dark'`, or `'system'`). Defaults to `'system'`.
-- `storageKey`: The key used to persist theme preference in localStorage. Defaults to `'theme'`.
+- `defaultTheme`: The initial theme to use (`'light'`, `'dark'`, or `'system'`).
+  Defaults to `'system'`.
+- `storageKey`: The key used to persist theme preference in localStorage.
+  Defaults to `'theme'`.
 
 ```jsx
 <ThemeProvider defaultTheme="dark" storageKey="my-app-theme">
@@ -88,7 +91,8 @@ Three theme options are available:
 
 - `light`: Forces light theme
 - `dark`: Forces dark theme
-- `system`: Automatically switches between light and dark based on system preferences
+- `system`: Automatically switches between light and dark based on system
+  preferences
 
 ## API Reference
 
@@ -97,10 +101,12 @@ Three theme options are available:
 React hook that provides theme management functionality.
 
 Returns:
+
 - `theme`: Current theme value (`'light'`, `'dark'`, or `'system'`)
 - `setTheme`: Function to update the theme
 
 Example:
+
 ```jsx
 const { theme, setTheme } = useTheme('system')
 ```
@@ -110,15 +116,22 @@ const { theme, setTheme } = useTheme('system')
 Context provider component that must wrap your application.
 
 Props:
+
 - `defaultTheme`: Initial theme (optional)
 - `storageKey`: localStorage key for persistence (optional)
 - `children`: React nodes
 
 Example:
+
 ```jsx
 <ThemeProvider defaultTheme="system">
   <App />
 </ThemeProvider>
 ```
 
+### Advanced Usage
 
+For Advanced use cases like multiple themes and different default states, you
+can write your own context and use
+[@dumbjs/persona](https://github.com/dumbjs/persona) that abstracts the browser
+APIs to make it simpler for you to use.
