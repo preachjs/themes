@@ -64,5 +64,11 @@
     "@preact/signals": "^2.0.1",
     "preact": "^10"
   },
-  "packageManager": "pnpm@9.15.9"
+  "packageManager": "pnpm@9.15.9",
+  "pnpm": {
+    "overrides": {
+      "@babel/runtime@<7.26.10": ">=7.26.10",
+      "@babel/helpers@<7.26.10": ">=7.26.10"
+    }
+  }
 }
