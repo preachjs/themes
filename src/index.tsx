@@ -39,7 +39,7 @@ export const ThemeProvider = ({
   const setGlobalTheme = useCallback(
     (theme: string, store: boolean) =>
       setPersonaTheme(theme, {
-        element: document.querySelector('html') as HTMLElement,
+        element: document.documentElement,
         storageKey: storageKey,
         store: store,
       }),
@@ -93,6 +93,18 @@ export const ThemeProvider = ({
           const el = document.documentElement
           el.dataset.theme = theme
           el.style.colorScheme = theme
+          el.style.visibility = "hidden"
+          
+          function onMount(fn){
+            document.addEventListener("DOMContentLoaded",fn)
+            if(document.readyState==="interactive" || document.readyState==="complete"){
+              fn()
+            }
+          }
+
+          onMount(()=>{
+            el.style.visibility = "visible"
+          })
         `,
         }}
       ></script>
