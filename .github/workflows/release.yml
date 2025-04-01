@@ -1,7 +1,15 @@
 name: Publish Package to npmjs
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      choice:
+        type: choice
+        description: Version Bump
+        options:
+          - major
+          - minor
+          - patch
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,6 +27,7 @@ jobs:
           node-version: "20.x"
           registry-url: "https://registry.npmjs.org"
       - run: pnpm i --frozen-lockfile
-      - run: npm publish --provenance --access public
+      - run: pnpm build
+      - run: npx screw-it@latest --bump=${{ github.event.inputs.choice }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
