@@ -1,6 +1,6 @@
 {
   "name": "@preachjs/themes",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "themes provider for preact",
   "homepage": "https://github.com/preachjs/themes",
   "bugs": {
