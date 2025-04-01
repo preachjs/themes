@@ -32,3 +32,5 @@ jobs:
       - run: npx screw-it@latest --bump=${{ github.event.inputs.choice }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Sync
+        run: git push
