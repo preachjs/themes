@@ -1,25 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.twind.style" crossorigin></script>
-    <link rel="stylesheet" href="styles.css" />
   </head>
 
-  <body>
+  <body class="!block" style="display: none">
     <header>
       <div class="overlay">
         <div class="home">
           <a href="/">@preachjs/themes</a>
         </div>
         <nav>
-          <a href="https://github.com/preachjs/themes/#readme.md" target="_blank"
-            >docs ↗</a
-          >
+          <a
+            href="https://github.com/preachjs/themes/#readme.md"
+            target="_blank"
+          >docs ↗</a>
           <a href="https://github.com/preachjs/themes" target="_blank"
-            >source ↗</a
-          >
+          >source ↗</a>
         </nav>
       </div>
     </header>
@@ -31,29 +29,6 @@
     <section>
       <div id="app"></div>
     </section>
-    <script type="importmap">
-      {
-        "imports": {
-          "@dumbjs/persona": "https://unpkg.com/@dumbjs/persona@0.1.1/dist/index.mjs",
-          "@preact/signals": "https://ga.jspm.io/npm:@preact/signals@2.0.1/dist/signals.module.js",
-          "preact": "https://ga.jspm.io/npm:preact@10.26.4/dist/preact.module.js",
-          "preact/hooks": "https://ga.jspm.io/npm:preact@10.26.4/hooks/dist/hooks.module.js",
-          "preact/jsx-runtime": "https://ga.jspm.io/npm:preact@10.26.4/jsx-runtime/dist/jsxRuntime.module.js",
-          "preact/compat": "https://ga.jspm.io/npm:preact@10.26.4/compat/dist/compat.module.js"
-        },
-        "scopes": {
-          "https://ga.jspm.io/": {
-            "@preact/signals-core": "https://ga.jspm.io/npm:@preact/signals-core@1.8.0/dist/signals-core.module.js"
-          }
-        }
-      }
-    </script>
-    <!-- ES Module Shims import maps polyfills -->
-    <script
-      async
-      src="https://ga.jspm.io/npm:es-module-shims@2.0.10/dist/es-module-shims.js"
-      crossorigin="anonymous"
-    ></script>
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./src/index.jsx"></script>
   </body>
 </html>

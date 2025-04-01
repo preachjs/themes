@@ -28,10 +28,9 @@
   "types": "./dist/index.d.ts",
   "files": ["dist/*"],
   "scripts": {
-    "dev": "concurrently 'pnpm:build watch' 'pnpm:build:docs watch'",
-    "build": "pnpm build:js && pnpm build:docs",
-    "build:js": "microbundle -f modern",
-    "build:docs": "microbundle -f modern -o docs/bundle",
+    "dev": "concurrently 'pnpm:build watch'",
+    "build": "microbundle -f modern",
+    "build:docs": "pnpm build; pnpm -r build",
     "fix": "biome check --fix .",
     "prepare": "husky",
     "next": "bumpp",
