@@ -33,4 +33,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Sync
-        run: git push
+        run: git push --follow-tags && git push --tags
