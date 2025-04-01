@@ -10,6 +10,7 @@
 
 - 📦 Tiny bundle size (~413B GZipped)
 - 🤌 Simple API
+- No FOUC (in cases where preact isn't loaded on network)
 - Based on [@dumbjs/persona](https://github.com/dumbjs/persona)
 
 ## Install
